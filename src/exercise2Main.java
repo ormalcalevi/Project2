@@ -137,35 +137,18 @@ public class exercise2Main {
             }
         System.out.println("The total yield:"+sum);
         }
-
-    private static void  PropertiesByCity(String city){
-        String name=city.toLowerCase();
-        name.replaceAll("[_-]"," ");
-        String [] splits=name.split(" ");
-        for (int i = 0; i <splits.length ; i++) {
-            splits[i]=splits[i].substring(0,1).toUpperCase()+splits[i].substring(1);
-        }
-        name=String.join(" ",splits);
-
-        for ( Property property : manager.getProperties()) {
-            if(property.getAddress().equals(name)){
-                System.out.println(property.toString());
-            }
-        }
-    }
+//4:
     public static void propertiesByCity() {
         System.out.print("Enter city name: ");
         String cityInput = scanner.nextLine();
-        String normalizedCity = cityInput.toLowerCase();
-        normalizedCity = normalizedCity.replace("-", " ");
+        String city1 = cityInput.toLowerCase();
+        city1 = city1.replace("-", " ");
 
         boolean check = true;
         for(Property property : manager.getProperties()) {
-            String address = property.getAddress();
-            int cityIndexInAddress = address.lastIndexOf(",") + 2;
-            String city = address.substring(cityIndexInAddress).toLowerCase();
+            String city = property.getAddress().toLowerCase();
 
-            if(normalizedCity.equals(city)) {
+            if(city1.equals(city)) {
                 System.out.println(property + "\n");
                 check = false;
             }
@@ -176,6 +159,7 @@ public class exercise2Main {
         }
     }
 
+//5:
     private static void NumberOfCities(){
         String cities="";
         for ( Property property : manager.getProperties()) {
